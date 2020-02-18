@@ -1,0 +1,23 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <div class="container py-3">
+        <h1>{{ item.title }}</h1>
+        <div>
+            <a class="btn btn-primary" href="{{ path('admin_news_edit') }}">
+                <i class="fad fa-pencil"></i>
+                Edit
+            </a>
+        </div>
+        <hr>
+        {{ item.datePublished | date }}
+        <img src="{{ item.image }}" alt="{{ item.title }}" class="img-fluid">
+        <div class="lead">
+            {{ item.intro }}
+        </div>
+        <p>
+            {{ item.description | raw }}
+        </p>
+    </div>
+{% endblock %}
+

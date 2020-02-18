@@ -1,0 +1,55 @@
+{% extends "admin.html.twig" %}
+
+{% block body %}
+    <div class="container py-3">
+        <h1>
+            <i class="fad fa-newspaper"></i>
+            News
+        </h1>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>Published</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in news %}
+                    <tr>
+                        <td>
+                            <img src="{{ item.image }}" alt="{{ item.title }}" style="max-width: 60px;">
+                        </td>
+                        <td>
+                            <a href="{{ path('admin_news_view') }}">
+                                {{ item.title }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ item.datePublished | date }}
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="{{ path('admin_news_view') }}" class="btn btn-outline-primary">View</a>
+                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#">View</a>
+                                    <a class="dropdown-item" href="#">Edit</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Trash</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+{% endblock %}

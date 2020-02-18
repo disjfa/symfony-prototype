@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Prototype!{% endblock %}</title>
+    {% block stylesheets %}
+        {#{{ encore_entry_link_tags('app') }}#}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+            @media screen and (min-width: 992px) {
+                .vh-lg-100 {
+                    min-height: 100vh;
+                }
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+<div class="d-lg-flex">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light flex-lg-column align-items-lg-start justify-content-lg-start vh-lg-100" style="min-width: 250px;">
+        <a class="navbar-brand pl-2" href="{{ path('home_index') }}">Prototype</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse flex-lg-grow-0" id="main-navbar">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 flex-lg-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_dashboard_index') }}">
+                        <i class="fad fa-fw fa-tachometer"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_news_index') }}">
+                        <i class="fad fa-fw fa-newspaper"></i>
+                        News
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fad fa-fw fa-project-diagram"></i>
+                        Projects
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="flex-grow-1">
+        {% for label, messages in app.flashes() %}
+            {% for message in messages %}
+                <div class="container">
+                    <div class="alert alert-{{ label }} alert-dismissible fade show mt-3">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% block body %}{% endblock %}
+    </main>
+</div>
+{% block javascripts %}
+    {#{{ encore_entry_script_tags('app') }}#}
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/319cc00cd1.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/chart.js" crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+</html>
