@@ -6,14 +6,14 @@
             <i class="fad fa-newspaper"></i>
             News
         </h1>
-
+        {{ knp_pagination_render(news) }}
         <div class="table-responsive">
             <table class="table">
                 <thead>
                 <tr>
                     <th></th>
-                    <th>Title</th>
-                    <th>Published</th>
+                    <th>{{ knp_pagination_sortable(news, 'Title', 'title') }}</th>
+                    <th>{{ knp_pagination_sortable(news, 'Published', 'datePublished') }}</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -38,18 +38,18 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">View</a>
-                                    <a class="dropdown-item" href="#">Edit</a>
+                                    <a class="dropdown-item" href="{{ path('admin_news_view') }}">View</a>
+                                    <a class="dropdown-item" href="{{ path('admin_news_edit') }}">Edit</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Trash</a>
+                                    <a class="dropdown-item" href="{{ path('admin_news_delete') }}">Trash</a>
                                 </div>
                             </div>
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
-
             </table>
+            {{ knp_pagination_render(news) }}
         </div>
     </div>
 {% endblock %}

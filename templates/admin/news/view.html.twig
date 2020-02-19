@@ -8,9 +8,13 @@
                 <i class="fad fa-pencil"></i>
                 Edit
             </a>
+            <a class="btn btn-danger" href="{{ path('admin_news_delete') }}">
+                <i class="fad fa-trash"></i>
+                Delete
+            </a>
         </div>
         <hr>
-        {{ item.datePublished | date }}
+        <div>{{ item.datePublished | date }}</div>
         <img src="{{ item.image }}" alt="{{ item.title }}" class="img-fluid">
         <div class="lead">
             {{ item.intro }}

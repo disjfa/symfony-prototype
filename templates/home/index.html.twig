@@ -14,7 +14,8 @@
             <div class="carousel-inner">
                 {% for item in images %}
                     <div class="carousel-item{% if loop.first %} active{% endif %}">
-                        <img src="{{ item.image }}" class="d-block w-100" alt="{{ item.name }}">
+                        <div class="embed-responsive embed-responsive-16by9 bg-dark img-cover" style="background-image: url({{ item.image }});">
+                        </div>
                         <div class="carousel-caption d-none d-md-block">
                             <h5>{{ item.name }}</h5>
                             <p>{{ item.caption }}</p>

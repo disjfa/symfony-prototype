@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Faker\NewsFaker;
 use App\Form\Type\NewsFormType;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,12 +15,19 @@ class NewsController extends AbstractController
     /**
      * @Route("admin/news", name="admin_news_index")
      * @param NewsFaker $newsFaker
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Response
      */
-    public function index(NewsFaker $newsFaker)
+    public function index(NewsFaker $newsFaker, PaginatorInterface $paginator, Request $request)
     {
+        $news = $newsFaker->get(46);
+
         return $this->render('admin/news/index.html.twig', [
-            'news' => $newsFaker->get(25),
+            'news' => $paginator->paginate($news, $request->query->getInt('page', 1), 10, [
+                PaginatorInterface::DEFAULT_SORT_FIELD_NAME => 'datePublished',
+                PaginatorInterface::DEFAULT_SORT_DIRECTION => 'desc',
+            ]),
         ]);
     }
 
@@ -31,6 +39,17 @@ class NewsController extends AbstractController
     public function view(NewsFaker $newsFaker)
     {
         return $this->render('admin/news/view.html.twig', [
+            'item' => current($newsFaker->get(1)),
+        ]);
+    }
+    /**
+     * @Route("admin/news/delete", name="admin_news_delete")
+     * @param NewsFaker $newsFaker
+     * @return Response
+     */
+    public function delete(NewsFaker $newsFaker)
+    {
+        return $this->render('admin/news/delete.html.twig', [
             'item' => current($newsFaker->get(1)),
         ]);
     }

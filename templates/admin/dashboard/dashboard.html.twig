@@ -15,6 +15,26 @@
             </div>
         </div>
     </div>
+    <div class="container py-3">
+        <h3>
+            <a href="{{ path('admin_news_index') }}">
+                <i class="fad fa-newspaper"></i>
+                News
+            </a>
+        </h3>
+        <div class="row py-3">
+            {% for item in news %}
+                <div class="col-lg-4 col-12 mb-3">
+                    <a class="card text-white bg-dark h-100 img-cover" href="{{ path('admin_news_view') }}" style="background-image: url({{ item.image }});">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.title }}</h5>
+                            <p class="card-text">{{ item.intro }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

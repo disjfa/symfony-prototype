@@ -13,12 +13,29 @@
                     min-height: 100vh;
                 }
             }
+
+            .sortable:after {
+                content: "\2195";
+            }
+
+            .desc:after {
+                content: "\2191";
+            }
+
+            .asc:after {
+                content: "\2193";
+            }
+
+            .img-cover {
+                background-position: center center;
+                background-size: cover;
+            }
         </style>
     {% endblock %}
 </head>
 <body>
 <div class="d-lg-flex">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light flex-lg-column align-items-lg-start justify-content-lg-start vh-lg-100" style="min-width: 250px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-lg-column align-items-lg-start justify-content-lg-start vh-lg-100" style="min-width: 250px;">
         <a class="navbar-brand pl-2" href="{{ path('home_index') }}">Prototype</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

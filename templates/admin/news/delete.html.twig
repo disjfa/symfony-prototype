@@ -1,0 +1,20 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <div class="container py-3">
+        <h1>Delete <em>{{ item.title }}</em>?</h1>
+        <div class="text-center py-5 bg-light">
+            <p content="lead">Are you sure you want to delete this item?</p>
+            <a href="{{ path('admin_news_index') }}" class="btn btn-danger">
+                <i class="fad fa-trash"></i>
+                Yes, delete!
+            </a>
+            <a href="{{ path('admin_news_view') }}" class="btn btn-secondary">
+                <i class="fad fa-times"></i>
+                No, cancel!
+            </a>
+        </div>
+        <p>{{ item.intro }}</p>
+        {{ item.description }}
+    </div>
+{% endblock %}
