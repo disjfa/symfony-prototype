@@ -9,8 +9,6 @@
 require('../scss/app.scss');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-const $ = require('jquery');
-require('popper.js');
 require('bootstrap');
 // require('./../../public/bundles/disjfamedia/js/media');
 // require('./components/scrolintoview');
